@@ -1,9 +1,0 @@
-[Core]
-Name = Webhook
-Module = webhook
-
-[Python]
-Version = 3
-
-[Documentation]
-Description = Gitops webhook
