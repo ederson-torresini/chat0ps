@@ -19,7 +19,7 @@ class GitOps(BotPlugin):
 
     def activate(self):
         super().activate()
-        self.start_poller(60, self.check_mongo)
+        self.start_poller(10, self.check_mongo)
 
 
     @webhook(raw=True)
