@@ -25,16 +25,32 @@ class GitOps(BotPlugin):
     @webhook(raw=True)
     def publish(self, request):
         """Webhook for git pushes"""
+        # For now, just GitHub webhooks are accepted.
+        # Soon others providers, like GitLab, will be available.
         if request.get_header("user-agent").split("/")[0] == "GitHub-Hookshot":
-            payload = request.json
-            self.warn_admins("GitHub notification: new commit(s) in "
-                             + payload["repository"]["name"]
-                             + " pushed by user " + payload["pusher"]["email"]
-                             + ". You can look the diff in " + payload["compare"] + ".")
+            # It is a ping or a push event?
+            if request.get_header("X-GitHub-Event") == "ping":
+                return None
+            else:
+                payload = request.json
+                repository = payload["repository"]["url"]
+                branch = payload["ref"].split("/")[-1]
+                pusher = payload["pusher"]["email"]
+                diff = payload["compare"]
         else:
-            # For now, just GitHub webhooks are accepted.
-            # Soon others providers, like GitLab, will be available.
             abort(400, "Bad Request")
+        # Get subscribers' list
+        collection = MongoClient().chat0ps.subscriptions
+        document = {"repository": repository}
+        message = "GitHub notification: " + pusher + " pushed to `"
+        message += branch + "` in `""" + repository + "`."
+        message += " You can look the diff in: " + payload["compare"] + "."
+        subscribers = collection.find_one(document)
+        if subscribers is None:
+            self.warn_admins("Warning: webhook in " + repository + " with no subscriber.")
+        else:
+            for subscriber in subscribers["subscribers"]:
+                self.send(self.build_identifier(subscriber), message)
 
 
     def validURL(self, args):
@@ -73,10 +89,9 @@ class GitOps(BotPlugin):
                 else:
                     # Add user to subscribers list
                     collection.update(repository, {"$push": {"subscribers": msg.frm.person}})
-                    yield "Done."
-                    yield "You may now set repository webhook to: http://35.198.17.35/publish"
+                    yield "Done. You may now set repository webhook to: http://35.198.17.35/publish"
             else:
-                # If the repository doesn't exists, it's time to create 
+                # If the repository doesn't exists, it's time to create
                 # and subscribe the user to it in a single command.
                 # Note a little difference here: "subscribers" ust be a list.
                 subscription = {"repository": url, "subscribers": [msg.frm.person]}
