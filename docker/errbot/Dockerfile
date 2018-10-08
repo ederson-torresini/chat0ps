@@ -18,15 +18,12 @@ COPY ./docker-entrypoint.sh /
 COPY ./requirements.txt /
 RUN chmod 0755 /docker-entrypoint.sh && \
     pip install -r /requirements.txt && \
-    groupadd errbot && \
-    useradd -g errbot -d /errbot -m -s /bin/false errbot && \
+    mkdir /errbot && \
     errbot --init /errbot && \
-    chown -R errbot:errbot /errbot && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME ["/errbot"]
 WORKDIR "/errbot"
-USER "errbot"
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/local/bin/errbot"]
