@@ -6,9 +6,7 @@ variable "gke_password" { }
 
 
 // Provider
-// https://www.terraform.io/docs/providers/google/index.html
 provider "google" {
-  // https://console.cloud.google.com/apis/credentials/serviceaccountkey
   credentials = "${file("gcp.json")}"
   project = "${var.gcp_project}"
   zone = "${var.gcp_zone}"
@@ -16,7 +14,6 @@ provider "google" {
 
 
 // Resources
-// https://www.terraform.io/docs/providers/google/r/container_cluster.html
 resource "google_container_cluster" "chatops" {
   name = "chatops"
 
