@@ -8,7 +8,7 @@ class GitOps(BotPlugin):
 
 
     def check_mongo(self):
-        client = MongoClient()
+        client = MongoClient(host='mongodb')
         try:
             response = client.local.command("ping")
         except:
@@ -40,7 +40,7 @@ class GitOps(BotPlugin):
         else:
             abort(400, "Bad Request")
         # Get subscribers' list
-        collection = MongoClient().chat0ps.subscriptions
+        collection = MongoClient(host='mongodb').chat0ps.subscriptions
         document = {"repository": repository}
         message = "GitHub notification: " + pusher + " pushed to `"
         message += branch + "` in `""" + repository + "`."
@@ -76,7 +76,7 @@ class GitOps(BotPlugin):
         # Validate arguments: only the first in URL valid format
         url = self.validURL(args)
         if url:
-            collection = MongoClient().chat0ps.subscriptions
+            collection = MongoClient(host='mongodb').chat0ps.subscriptions
             # First check: if repository exists
             repository = {"repository": url}
             if collection.count_documents(repository) >= 1:
@@ -109,7 +109,7 @@ class GitOps(BotPlugin):
         """
         url = self.validURL(args)
         if url:
-            collection = MongoClient().chat0ps.subscriptions
+            collection = MongoClient(host='mongodb').chat0ps.subscriptions
             # Check: if subscription exists
             repository = {"repository": url}
             document = {"repository": url, "subscribers": msg.frm.person}
@@ -128,7 +128,7 @@ class GitOps(BotPlugin):
         """
         List all repository subscriptions.
         """
-        collection = MongoClient().chat0ps.subscriptions
+        collection = MongoClient(host='mongodb').chat0ps.subscriptions
         document = {"subscribers": msg.frm.person}
         subscriptions = collection.count_documents(document)
         # Check if there is at least one subscription

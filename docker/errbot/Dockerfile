@@ -20,7 +20,9 @@ RUN chmod 0755 /docker-entrypoint.sh && \
     pip install -r /requirements.txt && \
     mkdir /errbot && \
     errbot --init /errbot && \
-    apt-get clean && \
+    apt update && \
+    apt -y install git && \
+    apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 VOLUME ["/errbot"]
