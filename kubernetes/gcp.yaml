@@ -77,12 +77,13 @@ spec:
     metadata:
       labels:
         app: chatops
+        tier: backend
     spec:
       containers:
       - name: mongodb
         image: docker.io/mongo
         ports:
-        - name: mongo
+        - name: mongodb
           containerPort: 27017
         resources:
           requests:
