@@ -1,6 +1,7 @@
 # Terraform (state and access key)
-.terraform
 gcp.json
+*.tfvars*
+.terraform
 *.tfstate*
 
 # Kubernetes (Secret object and its sources)

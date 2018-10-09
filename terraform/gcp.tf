@@ -1,10 +1,17 @@
+// Variables
+variable "gcp_project" { }
+variable "gcp_zone" { }
+variable "gke_username" { }
+variable "gke_password" { }
+
+
 // Provider
 // https://www.terraform.io/docs/providers/google/index.html
 provider "google" {
   // https://console.cloud.google.com/apis/credentials/serviceaccountkey
   credentials = "${file("gcp.json")}"
-  project = "<insert your project here>"
-  region = "<insert your region here>"
+  project = "${var.gcp_project}"
+  zone = "${var.gcp_zone}"
 }
 
 
@@ -14,8 +21,8 @@ resource "google_container_cluster" "chatops" {
   name = "chatops"
 
   master_auth {
-    username = "<insert your username here>"
-    password = "<insert you password here>"
+    username = "${var.gke_username}"
+    password = "${var.gke_password}"
   }
 }
 
