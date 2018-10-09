@@ -1,6 +1,11 @@
+# Terraform (state and access key)
+.terraform
+gcp.json
+*.tfstate*
+
+# Kubernetes (Secret object and its sources)
 Secret.y*ml
 config.py
-data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
