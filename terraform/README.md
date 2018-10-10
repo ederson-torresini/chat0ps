@@ -4,13 +4,14 @@ The configuration file `gcp.tf` is based on [Terraform container cluster documen
 [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey).
 Save as `gcp.json`.
 
-2. Configure variables file `gcp.tfvars` using your own data: project and region/zone to deploy, and a username/password to login to K8s dashboard. Just a note: if you choose a region, GKE will create workers on ALL zones, multiplying by this factor the number of nodes.
+2. Create a file called `gcp.tfvars` using your own data: project and region/zone to deploy, a username/password to login to K8s dashboard. Use this format:
 ```
 gcp_project = "<insert your project here>"
 gcp_zone = "<insert your zone here>"
 gke_username = "<insert your GKE username here>"
 gke_password = "<insert your GKE password here>"
 ```
+Just a note: if you choose region instead of zone, GKE will create workers on ALL zones, multiplying by this factor the number of nodes.
 
 3. Initialize working directory:
 ```bash
