@@ -1,10 +1,11 @@
-The configuration file `gcp.tf` is based on [Terraform container cluster documentation](https://www.terraform.io/docs/providers/google/r/container_cluster.html). The following steps are required to deploy the cluster in [GKE]((https://cloud.google.com/kubernetes-engine/)).
+# Terraform
+The configuration file `gcp.tf` is based on [Terraform container cluster documentation](https://www.terraform.io/docs/providers/google/r/container_cluster.html). The following steps are required to deploy the cluster in [GKE]((https://cloud.google.com/kubernetes-engine/)) (assuming you already have [Terraform locally](https://www.terraform.io/downloads.html), don't you?).
 
 1. First, you need to create and download
 [Google service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey).
 Save as `gcp.json`.
 
-2. Create a file called `gcp.tfvars` using your own data: project and region/zone to deploy, a username/password to login to K8s dashboard. Use this format:
+2. Create a file called `gcp.tfvars` using your own data: project and region/zone to deploy ([see the list](https://cloud.google.com/compute/docs/regions-zones/)), a new  username/password pair to login to K8s dashboard. Use this format:
 ```
 gcp_project = "<insert your project here>"
 gcp_zone = "<insert your zone here>"

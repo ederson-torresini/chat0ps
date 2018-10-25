@@ -11,7 +11,7 @@ Compute, storage and network.
 The [official MongoDB](https://hub.docker.com/_/mongo/) container has been used.
 
 ### Errbot
-My Errbot solution uses Slack backend, so I made my own container.
+My Errbot solution uses Telegram backend, so I made my own container.
 
 [![](https://images.microbadger.com/badges/image/boidacarapreta/errbot.svg)](https://microbadger.com/images/boidacarapreta/errbot "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/commit/boidacarapreta/errbot.svg)](https://microbadger.com/images/boidacarapreta/errbot "Get your own commit badge on microbadger.com")

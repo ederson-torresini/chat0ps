@@ -16,6 +16,7 @@ provider "google" {
 // Resources
 resource "google_container_cluster" "chatops" {
   name = "chatops"
+  initial_node_count = 3
 
   master_auth {
     username = "${var.gke_username}"
