@@ -78,6 +78,7 @@ spec:
       labels:
         app: chatops
         tier: backend
+        version: "4.0"
     spec:
       containers:
       - name: mongodb
@@ -116,6 +117,7 @@ spec:
       labels:
         app: chatops
         tier: frontend
+        version: "5.2.0"
     spec:
       containers:
       - name: errbot
