@@ -71,7 +71,6 @@ metadata:
   labels:
     app: chatops
     tier: backend
-    version: "4.0"
 spec:
   replicas: 1
   template:
@@ -79,7 +78,6 @@ spec:
       labels:
         app: chatops
         tier: backend
-        version: "4.0"
     spec:
       containers:
       - name: mongodb
@@ -111,7 +109,6 @@ metadata:
   labels:
     app: chatops
     tier: frontend
-    version: "5.2.0"
 spec:
   replicas: 1
   template:
@@ -119,7 +116,6 @@ spec:
       labels:
         app: chatops
         tier: frontend
-        version: "5.2.0"
     spec:
       containers:
       - name: errbot
