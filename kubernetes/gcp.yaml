@@ -71,6 +71,7 @@ metadata:
   labels:
     app: chatops
     tier: backend
+    version: "4.0"
 spec:
   replicas: 1
   template:
@@ -78,10 +79,11 @@ spec:
       labels:
         app: chatops
         tier: backend
+        version: "4.0"
     spec:
       containers:
       - name: mongodb
-        image: docker.io/mongo
+        image: docker.io/mongo:4.0
         ports:
         - name: mongodb
           containerPort: 27017
@@ -109,6 +111,7 @@ metadata:
   labels:
     app: chatops
     tier: frontend
+    version: "5.2.0"
 spec:
   replicas: 1
   template:
@@ -116,10 +119,11 @@ spec:
       labels:
         app: chatops
         tier: frontend
+        version: "5.2.0"
     spec:
       containers:
       - name: errbot
-        image: docker.io/boidacarapreta/errbot
+        image: docker.io/boidacarapreta/errbot:latest
         ports:
         - name: http
           containerPort: 80
