@@ -1,0 +1,9 @@
+[Core]
+Name = K8s
+Module = k8s
+
+[Python]
+Version = 3
+
+[Documentation]
+Description = Kubernetes client
