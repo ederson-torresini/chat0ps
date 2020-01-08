@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/boidacarapreta/chat0ps) 
+
 # Chat0ps
 How to teach DevOps?
 This is an effort to show a path to learn: concepts like virtualization, tools and so forth.
