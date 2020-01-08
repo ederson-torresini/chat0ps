@@ -9,3 +9,5 @@ github:
     addLabel: prebuilt-in-gitpod
 image:
   file: .gitpod.Dockerfile
+tasks:
+  - init: pip3 install -r requirements.txt

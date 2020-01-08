@@ -1,2 +1,0 @@
-kubernetes==7.0.0
-pymongo==3.7.1

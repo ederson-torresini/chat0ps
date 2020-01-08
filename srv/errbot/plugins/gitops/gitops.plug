@@ -1,9 +1,0 @@
-[Core]
-Name = GitOps
-Module = gitops
-
-[Python]
-Version = 3
-
-[Documentation]
-Description = Gitops integration: PubSub via Webhook
