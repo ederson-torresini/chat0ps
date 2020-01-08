@@ -1,1 +1,11 @@
-{ image: { file: .gitpod.Dockerfile } }
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addComment: true
+    addBadge: true
+    addLabel: prebuilt-in-gitpod
+image:
+  file: .gitpod.Dockerfile
