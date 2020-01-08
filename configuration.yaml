@@ -1,44 +1,16 @@
-##                      _           _     _
-##   ___  _ __  ___  __| |_ __ ___ (_) __| |
-##  / _ \| '_ \/ __|/ _` | '__/ _ \| |/ _` |
-## | (_) | |_) \__ \ (_| | | | (_) | | (_| |
-##  \___/| .__/|___/\__,_|_|  \___/|_|\__,_|
-##       |_|
-##                   __ _
-##   ___ ___  _ __  / _(_) __ _
-##  / __/ _ \| '_ \| |_| |/ _` |
-## | (_| (_) | | | |  _| | (_| |
-##  \___\___/|_| |_|_| |_|\__, |
-##                        |___/
-##
-## A default config file to use with opsdroid
+logging:
+  console: true
+  extended: true
+  level: debug
+  path: /tmp/opsdroid.log
 
-## Set the logging level
-# logging:
-#   level: info
-#   path: opsdroid.log
-#   console: true
-#   extended: false
-#   filter:
-#     whitelist:
-#       - opsdroid.core
-#     blacklist:
-#       - opsdroid.loader
-
-## Set the location for opsdroid to install modules
-# module-path: "."
-
-## Show welcome message
-welcome-message: true
-
-## Configure the web server
-# web:
-#   host: '127.0.0.1'
-#   port: 8080
+web:
+  host: '127.0.0.1'
+  port: 8080
 #   ssl:
 #     cert: /path/to/cert.pem
 #     key: /path/to/key.pem
-#   webhook-token: "aabbccddee"
+  webhook-token: "chat0ps"
 
 ## Parsers
 # parsers:
@@ -97,121 +69,17 @@ welcome-message: true
 #
 ## Connector modules
 connectors:
-
   websocket:
-    # optional
-    bot-name: "mybot" # default "opsdroid"
-    max-connections: 10 # default is 10 users can be connected at once
-    connection-timeout: 10 # default 10 seconds before requested socket times out
+    bot-name: "chat0ps"
+    max-connections: 10
+    connection-timeout: 10
   
-  # Uncomment the connector(s) that you wish opsdroid to work on
-#
-#  ## Twitter (https://github.com/opsdroid/connector-twitter)
-#  twitter:
-#    # required
-#    consumer_key: "zyxw-abdcefghi-12345"
-#    consumer_secret: "zyxw-abdcefghi-12345-zyxw-abdcefghi-12345"
-#    oauth_token: "zyxw-abdcefghi-12345-zyxw-abdcefghi-12345"
-#    oauth_token_secret: "zyxw-abdcefghi-12345-zyxw-abdcefghi-12345"
-#    # optional
-#    enable_dms: true  # Should the bot respond to Direct Messages
-#    enable_tweets: true  # Should the bot respond to tweets
-#
-#  ## Webexteams (core)
-#  webexteams:
-#    # required
-#    webhook-url: http(s)://<host>:<port>  # Url for Webex Teams to connect to your bot
-#    token: <your bot access token>  # Your access token
-#
-#  ## Facebook (core)
-#  facebook:
-#    # required
-#    verify-token: aabbccddee
-#    page-access-token: aabbccddee112233445566
-#    # optional
-#    bot-name: "mybot" # default "opsdroid"
-#
-#  ## Matrix (core)
-#  matrix:
-#    # Required
-#    mxid: "@username:matrix.org"
-#    password: "mypassword"
-#    # Name of a single room to connect to
-#    room: "#matrix:matrix.org"
-#    # Alternatively, a dictionary of multiple rooms
-#    # One of these should be named 'main'
-#    rooms:
-#      'main': '#matrix:matrix.org'
-#      'other': '#riot:matrix.org'
-#    # Optional
-#    homeserver: "https://matrix.org"
-#    nick: "Botty McBotface"  # The nick will be set on startup
-#    room_specific_nicks: False  # Look up room specific nicknames of senders (expensive in large rooms)
-#
-#  ## Mattermost (core)
-#  mattermost:
-#    # Required
-#    api-token: "zyxw-abdcefghi-12345"
-#    url: "mattermost.server.com"
-#    team-name: "myteam"
-#    # Optional
-#    scheme: "http" # default: https
-#    port: 8065 # default: 8065
-#    ssl-verify: false # default: true
-#    connect-timeout: 30 # default: 30
-#
-#  ## Github (core)
-#  github:
-#    # required
-#    token: aaabbbcccdddeee111222333444
-#
-#  ## Gitter (core)
-#  gitter:
-#    # Required
-#    room-id: 1239kr
-#    token: jdr-3i4p-dk
-#    # Optional
-#    bot-name: opsdroid
-#
-#  ## Telegram (core)
-#  telegram:
-#    # required
-#    token: "123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ-ZYXWVUT"  # Telegram bot token
-#    # optional
-#    update-interval: 0.5  # Interval between checking for messages
-#    default-user: user1  # Default user to send messages to (overrides default room in connector)
-#    whitelisted-users:  # List of users who can speak to the bot, if not set anyone can speak
-#      - user1
-#      - user2
-#
-#  ## Slack (core)
-#  slack:
-#    # required
-#    token: "zyxw-abdcefghi-12345"
-#    # optional
-#    bot-name: "mybot" # default "opsdroid"
-#    default-room: "#random" # default "#general"
-#    icon-emoji: ":smile:" # default ":robot_face:"
-#    connect-timeout: 10 # default 10 seconds
-#    chat-as-user: true # default false
-#
-#  ## Rocketchat (core)
-#  rocketchat:
-#    # required
-#    user-id: "1ioKHDIOD"
-#    token: "zyxw-abdcefghi-12345"
-#    # optional
-#    bot-name: "mybot" # default "opsdroid"
-#    default-room: "random" # default "general"
-#    group: "MyAwesomeGroup" # default to None 
-#    channel-url: "http://127.0.0.1" # defaults to https://open.rocket.chat
-#    update-interval: 5 # defaults to 1
-#
-#  ## Shell (core)
-#  shell:
-#    # optional
-#    bot-name: "mybot" # default "opsdroid"
-#
+  telegram:
+   token: "***"
+   whitelisted-users:
+     - "***"
+  shell:
+    bot-name: "chat0ps"
 
 databases:
  redis:

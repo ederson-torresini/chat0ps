@@ -1,16 +1,5 @@
-# Local environment
-.DS_Store
-.vscode
-
-# Terraform (state and access key)
-gcp.json
-*.tfvars*
-.terraform
-*.tfstate*
-
-# Kubernetes (Secret object and its sources)
-Secret.y*ml
-config.py
+# Redis
+dump.rdb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
