@@ -1,41 +1,32 @@
+connectors:
+  telegram:
+    thinking-delay: 0
+    token: $TELEGRAM_TOKEN
+    typing-delay: 0
+    whitelisted-users:
+      - $TELEGRAM_WHITELIST_USER
+  websocket:
+    bot-name: chat0ps
+    connection-timeout: 10
+    max-connections: 10
+databases:
+  redis:
+    host: localhost
 logging:
   console: true
   extended: true
   level: debug
   path: /tmp/opsdroid.log
-
-web:
-  host: '127.0.0.1'
-  port: 8080
-  webhook-token: "chat0ps"
-
 parsers:
- regex:
-   enabled: true
- crontab:
-   enabled: true
-
-connectors:
-  websocket:
-    bot-name: "chat0ps"
-    max-connections: 10
-    connection-timeout: 10
-  telegram:
-    token: $TELEGRAM_TOKEN
-    whitelisted-users:
-      - $TELEGRAM_WHITELIST_USER
-  shell:
-    bot-name: "chat0ps"
-
-databases:
- redis:
-   host: "localhost"
-
+  crontab:
+    enabled: true
+  regex:
+    enabled: true
 skills:
-  google-it:
-    engine-url: https://www.google.com.br/
-    query-arg: search?q=
-  weather:
-    city: Florianopolis,BR
-    unit: metric
-    api-key: $OPENWEATHERMAP_API_KEY
+  - name: hi
+    path: /workspace/chat0ps/skills/hi/
+web:
+  host: "127.0.0.1"
+  port: 8080
+  webhook-token: chat0ps
+welcome-message: true
