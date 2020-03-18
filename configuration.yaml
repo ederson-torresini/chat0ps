@@ -24,7 +24,7 @@ parsers:
     enabled: true
 skills:
   - name: hi
-    path: /workspace/chat0ps/skills/hi/
+    path: skills/hi/
 web:
   host: "127.0.0.1"
   port: 8080
